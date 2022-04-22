@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0 (Python 3.10.4 on win32)" generated="20220422 06:28:37.149" rpa="false" schemaversion="3">
+<suite id="s1" name="Call Read API Token Request Create an Address" source="C:\Users\tseuser\PycharmProjects\RobotFramework\Spreecom_API\Call_Read_API_Token_Request_Create_an_Address.robot">
+<test id="s1-t1" name="Create an Address" line="13">
+<kw name="Get Token">
+<var>${response}</var>
+<msg timestamp="20220422 06:28:37.414" level="FAIL">No keyword with name 'Get Token' found. Did you try using keyword 'RequestsLibrary.GET' and forgot to use enough whitespace between keyword and arguments?</msg>
+<status status="FAIL" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${access_token}</var>
+<arg>${response}</arg>
+<arg>$.access_token</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="NOT RUN" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${token}</var>
+<arg>${access_token[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${token}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="NOT RUN" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${token}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Authorization=Bearer ${token}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<kw name="Get File" library="OperatingSystem">
+<var>${req_body}</var>
+<arg>Spreecom_API/TestData/CreateAddress.json</arg>
+<doc>Returns the contents of a specified file.</doc>
+<status status="NOT RUN" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${req_body}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<kw name="Convert String to JSON" library="JSONLibrary">
+<var>${json_body}</var>
+<arg>${req_body}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="NOT RUN" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>/api/v2/storefront/account/addresses</arg>
+<arg>json=${json_body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="NOT RUN" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<kw name="To Json" library="RequestsLibrary">
+<var>${response_body}</var>
+<arg>${response.content}</arg>
+<arg>pretty_print = True</arg>
+<doc>*DEPRECATED* Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</doc>
+<msg timestamp="20220422 06:28:37.414" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+<status status="NOT RUN" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response_body}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${fname}</var>
+<arg>${response.json()}</arg>
+<arg>$.data.attributes.firstname</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="NOT RUN" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${fname[0]}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${fname[0]}</arg>
+<arg>Robot</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${id}</var>
+<arg>${response.json()}</arg>
+<arg>$.data.id</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="NOT RUN" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${id_final}</var>
+<arg>${id[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${id_final}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220422 06:28:37.414" endtime="20220422 06:28:37.414"/>
+</kw>
+<status status="FAIL" starttime="20220422 06:28:37.399" endtime="20220422 06:28:37.414">No keyword with name 'Get Token' found. Did you try using keyword 'RequestsLibrary.GET' and forgot to use enough whitespace between keyword and arguments?</status>
+</test>
+<status status="FAIL" starttime="20220422 06:28:37.149" endtime="20220422 06:28:37.414"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Call Read API Token Request Create an Address">Call Read API Token Request Create an Address</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20220422 06:28:37.399" level="ERROR">Error in file 'C:\Users\tseuser\PycharmProjects\RobotFramework\Spreecom_API\Call_Read_API_Token_Request_Create_an_Address.robot' on line 8: Library '..\Resources\Read_API_Request.py' does not exist.</msg>
+<msg timestamp="20220422 06:28:37.414" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+</errors>
+</robot>
